@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
 import 'package:fruit_app/features/home/presentation/views/widgets/custom_seller.dart';
+import 'package:fruit_app/features/search/presentation/views/search_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -12,7 +13,18 @@ class HomeView extends StatelessWidget {
       bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SearchView();
+                  },
+                ),
+              );
+            },
+            icon: Icon(Icons.search),
+          ),
           IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
         ],
         title: Text(
