@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/authentication/presentation/views/forget_password_first_view.dart';
+import 'package:fruit_app/features/authentication/presentation/views/forget_password_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:fruit_app/features/authentication/presentation/views/widgets/phone_input_field.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -32,10 +33,7 @@ class LoginView extends StatelessWidget {
             ),
             Align(alignment: Alignment.topLeft, child: Text('Phone Number *')),
             SizedBox(height: 5),
-            CustomTextFormField(
-              hintText: 'Mobile Number',
-              keyboardType: TextInputType.number,
-            ),
+           PhoneInputField(),
             Align(alignment: Alignment.topLeft, child: Text('Password *')),
             SizedBox(height: 5),
             CustomTextFormField(hintText: 'Password'),
@@ -47,11 +45,11 @@ class LoginView extends StatelessWidget {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return ForgetPasswordFirstView();
+                        return ForgetPasswordView();
                       },
                     ),
                   );
-                  ;
+                  
                 },
                 child: Text(
                   'Forget password ?',
@@ -63,8 +61,8 @@ class LoginView extends StatelessWidget {
               width: 300,
               child: CustomButton(
                 text: 'Login',
-                buttonColor: pColor,
-                color: Colors.white,
+                // buttonColor: pColor,
+                // textColor: Colors.white,
               ),
             ),
             SizedBox(height: 20),

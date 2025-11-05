@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/authentication/presentation/views/forget_password_second_view.dart';
+import 'package:fruit_app/features/authentication/presentation/views/otp_code_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:fruit_app/features/authentication/presentation/views/widgets/phone_input_field.dart';
 
-class ForgetPasswordFirstView extends StatelessWidget {
-  const ForgetPasswordFirstView({super.key});
+class ForgetPasswordView extends StatelessWidget {
+  const ForgetPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,22 +33,19 @@ class ForgetPasswordFirstView extends StatelessWidget {
             ),
             Align(alignment: Alignment.topLeft, child: Text('Phone Number *')),
             SizedBox(height: 5),
-            CustomTextFormField(
-              hintText: 'Mobile Number',
-              keyboardType: TextInputType.number,
-            ),
+            PhoneInputField(),
             SizedBox(height: 20),
             SizedBox(
               width: 300,
               child: CustomButton(
                 text: 'Submit',
-                color: Colors.white,
+                textColor: Colors.white,
                 buttonColor: pColor,
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
                       builder: (context) {
-                        return ForgetPasswordSecondView();
+                        return OtpCodeView();
                       },
                     ),
                   );

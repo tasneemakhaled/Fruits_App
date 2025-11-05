@@ -11,6 +11,20 @@ class WelcomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(Icons.close, color: Colors.black),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return SignUpView();
+                  },
+                ),
+              );
+            },
+          ),
+        ),
         body: Column(
           children: [
             SizedBox(height: 20),
@@ -33,56 +47,34 @@ class WelcomeView extends StatelessWidget {
             SizedBox(
               width: 300,
               child: CustomButton(
+                buttonColor: Colors.white,
                 prefixIcon: Icon(Icons.phone, color: Colors.black),
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SignUpView();
-                      },
-                    ),
-                  );
-                },
+                onPressed: () {},
                 text: 'Sign in With Phone Number',
-                color: Colors.black,
+                textColor: Colors.black,
               ),
             ),
             SizedBox(
               width: 300,
               child: CustomButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SignUpView();
-                      },
-                    ),
-                  );
-                },
+                buttonColor: Colors.white,
+                onPressed: () {},
                 prefixIcon: Icon(FontAwesomeIcons.google, color: Colors.black),
                 text: 'Sign In With Google',
-                color: Colors.black,
+                textColor: Colors.black,
               ),
             ),
             SizedBox(
               width: 300,
               child: CustomButton(
-                onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return SignUpView();
-                      },
-                    ),
-                  );
-                },
+                onPressed: () {},
                 buttonColor: Color(0xff235C95),
                 prefixIcon: Icon(
                   FontAwesomeIcons.facebook,
                   color: Colors.black,
                 ),
                 text: 'Sign In With Facebook',
-                color: Colors.black,
+                textColor: Colors.black,
               ),
             ),
             SizedBox(height: 20),

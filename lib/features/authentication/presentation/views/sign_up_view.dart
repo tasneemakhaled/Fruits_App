@@ -3,6 +3,7 @@ import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/authentication/presentation/views/login_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:fruit_app/features/authentication/presentation/views/widgets/phone_input_field.dart';
 
 class SignUpView extends StatelessWidget {
   const SignUpView({super.key});
@@ -38,10 +39,7 @@ class SignUpView extends StatelessWidget {
               child: Text('Phone Number with Whatsapp *'),
             ),
             SizedBox(height: 5),
-            CustomTextFormField(
-              hintText: 'Mobile Number',
-              keyboardType: TextInputType.number,
-            ),
+           PhoneInputField(),
             Align(alignment: Alignment.topLeft, child: Text('Password *')),
             SizedBox(height: 5),
             CustomTextFormField(hintText: 'Password'),
@@ -60,7 +58,7 @@ class SignUpView extends StatelessWidget {
                 },
                 text: 'Sign UP',
                 buttonColor: pColor,
-                color: Colors.white,
+                textColor: Colors.white,
               ),
             ),
             SizedBox(height: 20),

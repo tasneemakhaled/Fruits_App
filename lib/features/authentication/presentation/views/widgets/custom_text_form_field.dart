@@ -10,12 +10,15 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: keyboardType,
-      decoration: InputDecoration(
-        hintText: hintText,
+    return SizedBox(
+      height: 60,
+      child: TextFormField(
+        keyboardType: keyboardType,
+        decoration: InputDecoration(
+          hintText: hintText,
 
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(64)),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(64)),
+        ),
       ),
     );
   }
