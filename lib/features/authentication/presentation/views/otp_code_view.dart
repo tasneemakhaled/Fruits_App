@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
+import 'package:fruit_app/features/home/presentation/views/home_view.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpCodeView extends StatelessWidget {
@@ -56,7 +57,21 @@ class OtpCodeView extends StatelessWidget {
             ),
 
             SizedBox(height: 20),
-            SizedBox(width: 300, child: CustomButton(text: 'Confirm')),
+            SizedBox(
+              width: 300,
+              child: CustomButton(
+                text: 'Confirm',
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return HomeView();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
             SizedBox(height: 20),
             Text(
               '60',
