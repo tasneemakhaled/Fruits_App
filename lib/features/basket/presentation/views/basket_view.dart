@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/basket/presentation/views/widgets/custom_basket_card.dart';
+import 'package:fruit_app/features/basket/presentation/views/widgets/custom_basket_price.dart';
 
 class BasketView extends StatelessWidget {
   const BasketView({super.key});
@@ -13,6 +15,12 @@ class BasketView extends StatelessWidget {
           'Basket',
           style: TextStyle(color: pColor, fontWeight: FontWeight.bold),
         ),
+      ),
+      body: Column(
+        children: [
+          Column(children: [CustomBasketCard(), CustomBasketCard()]),
+          CustomBasketPrice(),
+        ],
       ),
     );
   }

@@ -31,6 +31,7 @@ dependencies:
   awesome_icons: ^1.1.0
   country_code_picker: ^3.4.1
   cupertino_icons: ^1.0.8
+  dotted_line: ^3.2.3
   flutter:
     sdk: flutter
   flutter_feather_icons: ^2.0.0+1
