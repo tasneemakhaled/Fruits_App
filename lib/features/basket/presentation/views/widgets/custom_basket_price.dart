@@ -1,6 +1,7 @@
 import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/checkout/presentation/views/checkout_view.dart';
 
 class CustomBasketPrice extends StatelessWidget {
   const CustomBasketPrice({super.key});
@@ -31,7 +32,15 @@ class CustomBasketPrice extends StatelessWidget {
               Spacer(),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: pColor),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return CheckoutView();
+                      },
+                    ),
+                  );
+                },
                 child: Text(
                   'Proceed to checkout',
                   style: TextStyle(

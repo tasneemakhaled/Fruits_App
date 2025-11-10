@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/authentication/presentation/views/otp_code_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_button.dart';
-import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
+
 import 'package:fruit_app/features/authentication/presentation/views/widgets/phone_input_field.dart';
 
 class ForgetPasswordView extends StatelessWidget {

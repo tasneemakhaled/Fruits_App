@@ -1,5 +1,3 @@
-import 'package:flutter/widgets.dart';
-
 class OnboardingModel {
   final String image;
   final String title;
