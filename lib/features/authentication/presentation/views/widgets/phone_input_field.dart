@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
-
 class PhoneInputField extends StatelessWidget {
   const PhoneInputField({super.key});
 
@@ -15,6 +14,7 @@ class PhoneInputField extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8),
           child: CountryCodePicker(
             onChanged: (code) {
+              // ignore: avoid_print
               print(code.dialCode); // كود الدولة اللي المستخدم اختاره
             },
             initialSelection: 'EG', // الدولة الافتراضية (مصر مثلاً)
@@ -27,18 +27,17 @@ class PhoneInputField extends StatelessWidget {
             textStyle: const TextStyle(fontSize: 16, color: Colors.black),
           ),
         ),
-        prefixIconConstraints: const BoxConstraints(
-          minWidth: 0,
-          minHeight: 0,
-        ),
+        prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(30), // تخليها دايرة زي الديزاين
           borderSide: const BorderSide(color: Colors.grey),
         ),
         filled: true,
         fillColor: Colors.white,
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 16, horizontal: 12),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: 12,
+        ),
       ),
     );
   }

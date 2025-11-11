@@ -7,7 +7,7 @@ import 'package:fruit_app/features/orders/presentation/views/orders_view.dart';
 import 'package:fruit_app/features/setting/presentation/views/setting_view.dart';
 
 class MainView extends StatefulWidget {
-  MainView({super.key});
+  const MainView({super.key});
 
   @override
   State<MainView> createState() => _MainViewState();

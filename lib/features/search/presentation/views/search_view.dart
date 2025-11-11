@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/home/presentation/views/widgets/custom_bottom_navigation_bar.dart';
+
 import 'package:fruit_app/features/search/presentation/views/widgets/filter_widget.dart';
 
 class SearchView extends StatelessWidget {

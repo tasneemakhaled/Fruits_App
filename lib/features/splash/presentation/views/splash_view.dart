@@ -13,6 +13,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: 6), () {
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) {

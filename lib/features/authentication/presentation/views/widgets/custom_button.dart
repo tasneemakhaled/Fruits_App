@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/authentication/presentation/views/sign_up_view.dart';
+
 
 class CustomButton extends StatelessWidget {
-  CustomButton({
+  const CustomButton({
     super.key,
     this.prefixIcon,
     required this.text,

@@ -25,7 +25,9 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
             RadioListTile(
               title: Text('50 Gram - 4.00 KD'),
               value: '50gram',
+              // ignore: deprecated_member_use
               groupValue: selectedWeight,
+              // ignore: deprecated_member_use
               onChanged: (value) {
                 setState(() {
                   selectedWeight = value;
@@ -35,7 +37,9 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
             RadioListTile(
               title: Text('1 Kg - 6.25 KD'),
               value: '1kg',
+              // ignore: deprecated_member_use
               groupValue: selectedWeight,
+              // ignore: deprecated_member_use
               onChanged: (value) {
                 setState(() {
                   selectedWeight = value;
@@ -45,7 +49,9 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
             RadioListTile(
               title: Text('2 Kg - 12.00 KD'),
               value: '2kg',
+              // ignore: deprecated_member_use
               groupValue: selectedWeight,
+              // ignore: deprecated_member_use
               onChanged: (value) {
                 setState(() {
                   selectedWeight = value;
@@ -62,7 +68,9 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
           children: [
             RadioListTile(
               value: '50 Gram - 4.00 KD',
+              // ignore: deprecated_member_use
               groupValue: selectedAddons,
+              // ignore: deprecated_member_use
               onChanged: (value) {
                 setState(() {
                   selectedAddons = value;
@@ -73,7 +81,9 @@ class _CustomExpansionTileState extends State<CustomExpansionTile> {
             ),
             RadioListTile(
               value: '1 Kg',
+              // ignore: deprecated_member_use
               groupValue: selectedAddons,
+              // ignore: deprecated_member_use
               onChanged: (value) {
                 setState(() {
                   selectedAddons = value;

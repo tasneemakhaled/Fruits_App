@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/basket/presentation/views/basket_view.dart';
-import 'package:fruit_app/features/favourite/presentation/views/favourite_view.dart';
-import 'package:fruit_app/features/home/presentation/views/home_view.dart';
-import 'package:fruit_app/features/orders/presentation/views/orders_view.dart';
-import 'package:fruit_app/features/setting/presentation/views/setting_view.dart';
 
+
+// ignore: must_be_immutable
 class CustomBottomNavigationBar extends StatelessWidget {
   CustomBottomNavigationBar({
     super.key,

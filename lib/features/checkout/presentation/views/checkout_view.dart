@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:fruit_app/features/checkout/presentation/views/widgets/checkout_header.dart';
-import 'package:fruit_app/features/checkout/presentation/views/widgets/time_widget.dart';
+
 
 class CheckoutView extends StatelessWidget {
   const CheckoutView({super.key});

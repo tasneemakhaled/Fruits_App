@@ -4,7 +4,7 @@ import 'package:fruit_app/features/authentication/presentation/views/welcome_vie
 import 'package:fruit_app/features/onboarding/presentation/view_models/onboarding_model.dart';
 
 class OnboardingView extends StatefulWidget {
-  OnboardingView({super.key});
+  const OnboardingView({super.key});
 
   @override
   State<OnboardingView> createState() => _OnboardingViewState();
