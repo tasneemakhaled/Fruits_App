@@ -13,7 +13,8 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -37,11 +38,20 @@ class LoginView extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.topLeft,
-                child: Text('Phone Number *'),
+                child: Text(
+                  'Phone Number *',
+                  style: TextStyle(color: Color(0xff858D9A)),
+                ),
               ),
               SizedBox(height: 5),
               PhoneInputField(),
-              Align(alignment: Alignment.topLeft, child: Text('Password *')),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Password *',
+                  style: TextStyle(color: Color(0xff858D9A)),
+                ),
+              ),
               SizedBox(height: 5),
               CustomTextFormField(hintText: 'Password'),
               SizedBox(height: 10),
@@ -59,7 +69,10 @@ class LoginView extends StatelessWidget {
                   },
                   child: Text(
                     'Forget password ?',
-                    style: TextStyle(decoration: TextDecoration.underline),
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      color: Color(0xff004D8E),
+                    ),
                   ),
                 ),
               ),
@@ -103,7 +116,10 @@ class LoginView extends StatelessWidget {
                     },
                     child: Text(
                       'Sign Up',
-                      style: TextStyle(decoration: TextDecoration.underline),
+                      style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        color: Color(0xff004D8E),
+                      ),
                     ),
                   ),
                 ],

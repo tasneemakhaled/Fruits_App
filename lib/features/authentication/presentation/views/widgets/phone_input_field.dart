@@ -6,39 +6,93 @@ class PhoneInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      keyboardType: TextInputType.phone,
-      decoration: InputDecoration(
-        hintText: 'Enter your phone number',
-        prefixIcon: Container(
-          padding: const EdgeInsets.only(left: 8),
-          child: CountryCodePicker(
-            onChanged: (code) {
-              // ignore: avoid_print
-              print(code.dialCode); // كود الدولة اللي المستخدم اختاره
-            },
-            initialSelection: 'EG', // الدولة الافتراضية (مصر مثلاً)
-            favorite: const ['+20', 'EG'],
-            showCountryOnly: false,
-            showOnlyCountryWhenClosed: false,
-            alignLeft: false,
-            flagWidth: 28,
-            padding: EdgeInsets.zero,
-            textStyle: const TextStyle(fontSize: 16, color: Colors.black),
+    return SizedBox(
+      height: 45, // زودتها سنة بسيطة عشان متقصش الكلام
+      child: TextFormField(
+        keyboardType: TextInputType.phone,
+        style: const TextStyle(fontSize: 15, color: Colors.black),
+        decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.white,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 18,
           ),
-        ),
-        prefixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30), // تخليها دايرة زي الديزاين
-          borderSide: const BorderSide(color: Colors.grey),
-        ),
-        filled: true,
-        fillColor: Colors.white,
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 16,
-          horizontal: 12,
+
+          // التعديل هنا: شلنا الـ width الثابت وخليناه ياخد مساحته
+          prefixIcon: Container(
+            // width: 100, // <--- شلت السطر ده عشان الكلام يظهر كامل
+            padding: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+            ), // ضفت right padding
+            child: CountryCodePicker(
+              onChanged: (country) => print(country.dialCode),
+              initialSelection: 'KW',
+              favorite: const ['+20', 'EG', '+965', 'KW'],
+              showCountryOnly: true,
+
+              builder: (CountryCode? country) {
+                return Row(
+                  mainAxisSize: MainAxisSize.min, // عشان ياخد مساحة المحتوى بس
+                  children: [
+                    const Icon(
+                      Icons.keyboard_arrow_down,
+                      color: Color(0xFF757575),
+                      size: 20,
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      country?.code ?? 'KW',
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                    const SizedBox(width: 10), // مسافة قبل الخط
+                    // الخط الفاصل العمودي
+                    Container(
+                      height: 30, // قللت الطول سنة عشان يبقى متناسق
+                      width: 1,
+                      color: const Color(0xFFE7E7E7),
+                    ),
+
+                    const SizedBox(width: 12), // مسافة بين الخط والكلمة
+                    // كلمة الموبايل نمبر (بنفس ستايل الـ Hint اللي في فيجما)
+                    const Text(
+                      'Mobile Number',
+                      style: TextStyle(
+                        color: Colors.black, // لون رمادي زي الديزاين
+                        fontSize: 15,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+
+          enabledBorder: buildBorder(),
+          focusedBorder: buildBorder(
+            color: const Color(0xFF355E3B),
+            width: 1.5,
+          ),
+          errorBorder: buildBorder(color: Colors.red),
+          focusedErrorBorder: buildBorder(color: Colors.red, width: 1.5),
         ),
       ),
+    );
+  }
+
+  OutlineInputBorder buildBorder({
+    Color color = const Color(0xFFE7E7E7),
+    double width = 1.0,
+  }) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(30),
+      borderSide: BorderSide(color: color, width: width),
     );
   }
 }

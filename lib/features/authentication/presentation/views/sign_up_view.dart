@@ -13,7 +13,8 @@ class SignUpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
@@ -35,21 +36,37 @@ class SignUpView extends StatelessWidget {
                 'Sign Up To Wikala',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
               ),
-              Align(alignment: Alignment.topLeft, child: Text('Full Name *')),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Full Name *',
+                  style: TextStyle(color: Color(0xff858D9A)),
+                ),
+              ),
               CustomTextFormField(hintText: 'First and Last Name'),
               SizedBox(height: 5),
               Align(
                 alignment: Alignment.topLeft,
-                child: Text('Phone Number with Whatsapp *'),
+                child: Text(
+                  'Phone Number with Whatsapp *',
+                  style: TextStyle(color: Color(0xff858D9A)),
+                ),
               ),
               SizedBox(height: 5),
               PhoneInputField(),
-              Align(alignment: Alignment.topLeft, child: Text('Password *')),
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text(
+                  'Password *',
+                  style: TextStyle(color: Color(0xff858D9A)),
+                ),
+              ),
               SizedBox(height: 5),
               CustomTextFormField(hintText: 'Password'),
               SizedBox(height: 10),
               SizedBox(
                 width: 300,
+                height: 45,
                 child: CustomButton(
                   onPressed: () {
                     Navigator.of(context).push(
@@ -88,6 +105,7 @@ class SignUpView extends StatelessWidget {
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                         fontSize: 16,
+                        color: Color(0xff004D8E),
                       ),
                     ),
                   ),
