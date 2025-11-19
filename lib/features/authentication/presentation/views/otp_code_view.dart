@@ -13,7 +13,9 @@ class OtpCodeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
+
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -45,11 +47,11 @@ class OtpCodeView extends StatelessWidget {
               animationType: AnimationType.fade,
               pinTheme: PinTheme(
                 shape: PinCodeFieldShape.circle,
-                fieldHeight: 60,
-                fieldWidth: 60,
+                fieldHeight: 48,
+                fieldWidth: 48,
                 inactiveColor: Colors.grey.shade300,
-                activeColor: Colors.green,
-                selectedColor: Colors.green,
+                activeColor: pColor,
+                selectedColor: pColor,
               ),
               textStyle: const TextStyle(
                 fontSize: 22,
@@ -60,8 +62,8 @@ class OtpCodeView extends StatelessWidget {
             SizedBox(height: 20),
             SizedBox(
               width: 300,
-              child: CustomButton(
-                text: 'Confirm',
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: pColor),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -71,6 +73,7 @@ class OtpCodeView extends StatelessWidget {
                     ),
                   );
                 },
+                child: Text('Confirm', style: TextStyle(color: Colors.white)),
               ),
             ),
             SizedBox(height: 20),
@@ -88,7 +91,7 @@ class OtpCodeView extends StatelessWidget {
                     'Send Again',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.blue,
+                      color: Color(0xff235C95),
                       fontWeight: FontWeight.bold,
                     ),
                   ),

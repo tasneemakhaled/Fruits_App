@@ -11,7 +11,8 @@ class ProfileView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Scaffold(
-        appBar: AppBar(),
+        backgroundColor: Colors.white,
+        appBar: AppBar(backgroundColor: Colors.white),
         body: SingleChildScrollView(
           child: Column(
             children: [

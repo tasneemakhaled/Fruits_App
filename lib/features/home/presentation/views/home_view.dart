@@ -10,33 +10,37 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SearchView();
-                  },
-                ),
-              );
-            },
-            icon: Icon(Icons.search),
-          ),
-          IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
-        ],
-        title: Text(
-          'Fruit Market',
-          style: TextStyle(
-            color: pColor,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          actions: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return SearchView();
+                    },
+                  ),
+                );
+              },
+              icon: Icon(Icons.search),
+            ),
+            IconButton(onPressed: () {}, icon: Icon(Icons.tune)),
+          ],
+          title: Text(
+            'Fruit Market',
+            style: TextStyle(
+              color: pColor,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
+        body: HomeBody(),
       ),
-      body: HomeBody(),
     );
   }
 }

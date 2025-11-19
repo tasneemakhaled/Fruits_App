@@ -11,7 +11,9 @@ class SellerStore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: Colors.white,
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
         title: Text(
           'Fruit Market',

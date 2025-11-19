@@ -10,8 +10,10 @@ class ContactView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Colors.white,
         title: Text(
           'Contact Us',
           style: TextStyle(color: pColor, fontWeight: FontWeight.bold),

@@ -26,14 +26,16 @@ class _MainViewState extends State<MainView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: pages[currentIndex],
-      bottomNavigationBar: CustomBottomNavigationBar(
-        // currentIndex: currentIndex,
-        // onTap: (index) {
-        //   currentIndex = index;
-        //   setState(() {});
-        // },
+    return SafeArea(
+      child: Scaffold(
+        body: pages[currentIndex],
+        bottomNavigationBar: CustomBottomNavigationBar(
+          // currentIndex: currentIndex,
+          // onTap: (index) {
+          //   currentIndex = index;
+          //   setState(() {});
+          // },
+        ),
       ),
     );
   }
