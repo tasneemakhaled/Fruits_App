@@ -1,8 +1,11 @@
+// ============== AddressWidget ==============
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 
 class AddressWidget extends StatelessWidget {
-  const AddressWidget({super.key});
+  final VoidCallback onContinue;
+  
+  const AddressWidget({super.key, required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,6 @@ class AddressWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // Icon(Icons.map),
                       Text(
                         'Address 1',
                         style: TextStyle(fontWeight: FontWeight.bold),
@@ -85,7 +87,7 @@ class AddressWidget extends StatelessWidget {
             width: MediaQuery.sizeOf(context).width * (3.5 / 4),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: pColor),
-              onPressed: () {},
+              onPressed: onContinue, // استخدمت الـ function هنا
               child: Text('Continue', style: TextStyle(color: Colors.white)),
             ),
           ),

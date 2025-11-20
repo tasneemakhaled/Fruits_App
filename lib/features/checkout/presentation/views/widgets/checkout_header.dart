@@ -12,36 +12,54 @@ class CheckoutHeader extends StatefulWidget {
 }
 
 class _CheckoutHeaderState extends State<CheckoutHeader> {
-  bool isTimeSelected = false;
+  int currentPage = 0;
+  late PageController _pageController;
 
-  bool isAddressSelected = false;
-
-  bool isPaymentSelected = false;
-  Widget? selectedWidget;
   @override
   void initState() {
     super.initState();
-    isTimeSelected = true; // تشيك على أول دايرة
-    selectedWidget = TimeWidget(); // يعرض الويجت بتاعها
+    _pageController = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _onPageChanged(int index) {
+    setState(() {
+      currentPage = index;
+    });
+  }
+
+  void _navigateToPage(int page) {
+    _pageController.animateToPage(
+      page,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void _goToNextPage() {
+    if (currentPage < 2) {
+      _navigateToPage(currentPage + 1);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
+    return Column(
+      children: [
+        // Header مع الدوائر والخطوط
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              // دايرة Time
               InkWell(
-                onTap: () {
-                  isTimeSelected = !isTimeSelected;
-
-                  selectedWidget = TimeWidget();
-                  isPaymentSelected = false;
-                  isAddressSelected = false;
-                  setState(() {});
-                },
+                onTap: () => _navigateToPage(0),
                 child: Container(
                   width: 24,
                   height: 24,
@@ -51,8 +69,8 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
                   ),
                   child: Center(
                     child: Container(
-                      width: isTimeSelected ? 8 : 0,
-                      height: isTimeSelected ? 8 : 0,
+                      width: currentPage == 0 ? 8 : 0,
+                      height: currentPage == 0 ? 8 : 0,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.black,
@@ -68,14 +86,9 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
                 lineLength: 130,
                 direction: Axis.horizontal,
               ),
+              // دايرة Address
               InkWell(
-                onTap: () {
-                  isAddressSelected = !isAddressSelected;
-                  selectedWidget = AddressWidget();
-                  isTimeSelected = false;
-                  isPaymentSelected = false;
-                  setState(() {});
-                },
+                onTap: () => _navigateToPage(1),
                 child: Container(
                   width: 24,
                   height: 24,
@@ -85,8 +98,8 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
                   ),
                   child: Center(
                     child: Container(
-                      width: isAddressSelected ? 8 : 0,
-                      height: isAddressSelected ? 8 : 0,
+                      width: currentPage == 1 ? 8 : 0,
+                      height: currentPage == 1 ? 8 :0,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.black,
@@ -102,14 +115,9 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
                 lineLength: 130,
                 direction: Axis.horizontal,
               ),
+              // دايرة Payment
               InkWell(
-                onTap: () {
-                  isPaymentSelected = !isPaymentSelected;
-                  selectedWidget = PaymentWidget();
-                  isAddressSelected = false;
-                  isTimeSelected = false;
-                  setState(() {});
-                },
+                onTap: () => _navigateToPage(2),
                 child: Container(
                   width: 24,
                   height: 24,
@@ -119,8 +127,8 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
                   ),
                   child: Center(
                     child: Container(
-                      width: isPaymentSelected ? 8 : 0,
-                      height: isPaymentSelected ? 8 : 0,
+                      width: currentPage == 2 ? 8 : 0,
+                      height: currentPage == 2 ? 8 : 0,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.black,
@@ -131,9 +139,21 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
               ),
             ],
           ),
-          selectedWidget ?? SizedBox(),
-        ],
-      ),
+        ),
+        // PageView للصفحات
+        Expanded(
+          child: PageView(
+            controller: _pageController,
+            onPageChanged: _onPageChanged,
+            physics: NeverScrollableScrollPhysics(),
+            children: [
+              TimeWidget(onContinue: _goToNextPage),
+              AddressWidget(onContinue: _goToNextPage),
+              PaymentWidget(onContinue: _goToNextPage),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }

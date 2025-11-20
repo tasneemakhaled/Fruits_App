@@ -23,7 +23,7 @@ class SearchView extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              showModalBottomSheet(
+              showDialog(
                 context: context,
                 builder: (context) {
                   return FilterWidget();

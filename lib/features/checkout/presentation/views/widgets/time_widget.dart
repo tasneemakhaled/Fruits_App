@@ -1,18 +1,21 @@
+// ============== TimeWidget ==============
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 
 class TimeWidget extends StatefulWidget {
-  const TimeWidget({super.key});
+  final VoidCallback onContinue;
+  
+  const TimeWidget({super.key, required this.onContinue});
 
   @override
   State<TimeWidget> createState() => _TimeWidgetState();
 }
 
-bool isSelected = false;
-bool isDeliveryTimeSelected = false;
-DateTime selectedDate = DateTime.now();
-
 class _TimeWidgetState extends State<TimeWidget> {
+  bool isSelected = false;
+  bool isDeliveryTimeSelected = false;
+  DateTime selectedDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -34,8 +37,9 @@ class _TimeWidgetState extends State<TimeWidget> {
                   Text('Now', style: TextStyle(fontWeight: FontWeight.bold)),
                   InkWell(
                     onTap: () {
-                      isSelected = !isSelected;
-                      setState(() {});
+                      setState(() {
+                        isSelected = !isSelected;
+                      });
                     },
                     child: Container(
                       width: 24,
@@ -83,8 +87,9 @@ class _TimeWidgetState extends State<TimeWidget> {
                       ),
                       InkWell(
                         onTap: () {
-                          isDeliveryTimeSelected = !isDeliveryTimeSelected;
-                          setState(() {});
+                          setState(() {
+                            isDeliveryTimeSelected = !isDeliveryTimeSelected;
+                          });
                         },
                         child: Container(
                           width: 24,
@@ -131,7 +136,7 @@ class _TimeWidgetState extends State<TimeWidget> {
             width: MediaQuery.sizeOf(context).width * (3.5 / 4),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: pColor),
-              onPressed: () {},
+              onPressed: widget.onContinue, // استخدمت الـ function هنا
               child: Text('Continue', style: TextStyle(color: Colors.white)),
             ),
           ),

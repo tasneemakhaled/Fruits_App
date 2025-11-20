@@ -1,12 +1,13 @@
+// ============== PaymentWidget ==============
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
-import 'package:fruit_app/features/checkout/presentation/views/checkout_error.dart';
 import 'package:fruit_app/features/checkout/presentation/views/checkout_success.dart';
-
 import 'package:fruit_app/features/checkout/presentation/views/widgets/way_of_payement.dart';
 
 class PaymentWidget extends StatelessWidget {
-  const PaymentWidget({super.key});
+  final VoidCallback onContinue;
+
+  const PaymentWidget({super.key, required this.onContinue});
 
   @override
   Widget build(BuildContext context) {
@@ -108,18 +109,14 @@ class PaymentWidget extends StatelessWidget {
             height: MediaQuery.sizeOf(context).height / 4,
             child: WayOfPayement(),
           ),
-          // SizedBox(height: MediaQuery.sizeOf(context).height / 3),
           SizedBox(
             width: MediaQuery.sizeOf(context).width * (3.5 / 4),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: pColor),
               onPressed: () {
+                // هنا ممكن تستخدمي onContinue أو تعملي Navigate للـ Success page
                 Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return CheckoutSuccess();
-                    },
-                  ),
+                  MaterialPageRoute(builder: (context) => CheckoutSuccess()),
                 );
               },
               child: Text('Place Order', style: TextStyle(color: Colors.white)),
