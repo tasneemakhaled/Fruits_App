@@ -1,9 +1,15 @@
-import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:fruit_app/core/notifications/firebase_api.dart';
 import 'package:fruit_app/features/splash/presentation/views/splash_view.dart';
+import 'package:fruit_app/firebase_options.dart';
 
-void main() {
-  runApp(DevicePreview(builder: (context) => FruitApp()));
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await FirebaseApi().initNotifications();
+  runApp(FruitApp());
 }
 
 class FruitApp extends StatelessWidget {
@@ -12,7 +18,8 @@ class FruitApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      builder: DevicePreview.appBuilder,
+      // navigatorKey: navigatorKey,
+      // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       home: SplashView(),
     );
