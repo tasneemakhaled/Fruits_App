@@ -4,22 +4,12 @@
     <!--  1. الصلاحيات الأساسية (Permissions)       -->
     <!-- ========================================== -->
     
-    <!-- ضروري لظهور الإشعارات في أندرويد 13+ -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-    
-    <!-- الاهتزاز -->
     <uses-permission android:name="android.permission.VIBRATE" />
-    
-    <!-- الجدولة (Scheduled Notifications) -->
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
-    
-    <!-- إعادة التشغيل (Boot) -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-
-    <!-- (جديد) للإشعارات التي تظهر بملء الشاشة مثل المكالمات أو المنبه -->
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
-
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -55,10 +45,8 @@
         <!--  2. إعدادات مكتبة Local Notifications     -->
         <!-- ========================================== -->
         
-        <!-- للجدولة (موجود سابقاً) -->
         <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
         
-        <!-- لإعادة التشغيل (موجود سابقاً) -->
         <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
@@ -68,8 +56,16 @@
             </intent-filter>
         </receiver>
 
-        <!-- (جديد ومهم) هذا هو الناقص من الصور: للتعامل مع الأزرار داخل الإشعار -->
         <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ActionBroadcastReceiver" />
+
+        <!-- ========================================== -->
+        <!--  3. (هام جداً) ربط قناة الإشعارات بفايربيز  -->
+        <!-- ========================================== -->
+        <!-- هذا السطر هو المسؤول عن جعل الإشعار يظهر كـ Pop-up في الخلفية -->
+        <!-- لأنه يخبر النظام باستخدام القناة channel_id_1 التي خصصناها لتكون High Importance -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="channel_id_1" />
 
     </application>
 
