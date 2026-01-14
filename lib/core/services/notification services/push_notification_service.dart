@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:fruit_app/core/services/local_notification_service.dart';
+import 'package:fruit_app/core/services/notification%20services/local_notification_service.dart';
 
 class PushNotificationService {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;

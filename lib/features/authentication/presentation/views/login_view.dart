@@ -6,6 +6,7 @@ import 'package:fruit_app/features/authentication/presentation/views/sign_up_vie
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:fruit_app/features/authentication/presentation/views/widgets/phone_input_field.dart';
 import 'package:fruit_app/features/home/presentation/views/home_view.dart';
+import 'package:fruit_app/features/home/presentation/views/main_view.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -84,7 +85,7 @@ class LoginView extends StatelessWidget {
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) {
-                          return HomeView();
+                          return MainView();
                         },
                       ),
                     );
