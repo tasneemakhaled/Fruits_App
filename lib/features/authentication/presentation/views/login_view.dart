@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruit_app/core/utils/constants.dart';
+import 'package:fruit_app/features/authentication/data/services/auth_service.dart';
 import 'package:fruit_app/features/authentication/presentation/views/forget_password_view.dart';
 import 'package:fruit_app/features/authentication/presentation/views/sign_up_view.dart';
 
@@ -81,14 +82,29 @@ class LoginView extends StatelessWidget {
                 width: 300,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(backgroundColor: pColor),
-                  onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MainView();
-                        },
-                      ),
-                    );
+                  onPressed: ()async {
+                    AuthService service = AuthService();
+  
+  // بننادي الوظيفة وبنستنى الرد
+  var user = await service.loginUser(
+   
+    phone_email:"01012345679",
+    password: "password123",
+  );
+
+  // بنختبر النتيجة
+  if (user != null) {
+    print("نجح التسجيل! التوكن هو: ${user.token}");
+  } else {
+    print("فشل التسجيل، الرد رجع فاضي");
+  }
+                    // Navigator.of(context).push(
+                    //   MaterialPageRoute(
+                    //     builder: (context) {
+                    //       return MainView();
+                    //     },
+                    //   ),
+                    // );
                   },
                   child: Text(
                     'Log in',
