@@ -24,7 +24,7 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController phoneController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
-
+  final GlobalKey<FormState> formKey=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -35,139 +35,156 @@ class _LoginViewState extends State<LoginView> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SingleChildScrollView(
-            child: Column(
-              children: [
-                SizedBox(height: 20),
-                Center(
-                  child: Text(
-                    'Fruit Market',
-                    style: TextStyle(
-                      color: pColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32,
-                    ),
-                  ),
-                ),
-                SizedBox(height: 15),
-                Text(
-                  'Login To Wikala',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-                ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Phone Number *',
-                    style: TextStyle(color: Color(0xff858D9A)),
-                  ),
-                ),
-                SizedBox(height: 5),
-                PhoneInputField(controller: phoneController),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Password *',
-                    style: TextStyle(color: Color(0xff858D9A)),
-                  ),
-                ),
-                SizedBox(height: 5),
-                CustomTextFormField(
-                  controller: passwordController,
-                  hintText: 'Password',
-                ),
-                SizedBox(height: 10),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return ForgetPasswordView();
-                          },
-                        ),
-                      );
-                    },
+            child: Form(
+              key: formKey,
+              child: Column(
+                children: [
+                  SizedBox(height: 20),
+                  Center(
                     child: Text(
-                      'Forget password ?',
+                      'Fruit Market',
                       style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        color: Color(0xff004D8E),
+                        color: pColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 32,
                       ),
                     ),
                   ),
-                ),
-                BlocConsumer<LoginUserCubit, LoginUserState>(
-                  listener: (context, state) {
-                    // TODO: implement listener
-                  },
-                  builder: (context, state) {
-                    return SizedBox(
-                      width: 300,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: pColor,
-                        ),
-                        onPressed: () async {
-                          AuthService service = AuthService();
-
-                          // بننادي الوظيفة وبنستنى الرد
-                          var user = await service.loginUser(
-                            phone_email: "01012345679",
-                            password: "password123",
-                          );
-
-                          // بنختبر النتيجة
-                          if (user != null) {
-                            print("نجح التسجيل! التوكن هو: ${user.token}");
-                          } else {
-                            print("فشل التسجيل، الرد رجع فاضي");
-                          }
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return MainView();
-                              },
-                            ),
-                          );
-                        },
-                        child: Text(
-                          'Log in',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Don\'t have an account?'),
-                    TextButton(
+                  SizedBox(height: 15),
+                  Text(
+                    'Login To Wikala',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Phone Number *',
+                      style: TextStyle(color: Color(0xff858D9A)),
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  PhoneInputField(controller: phoneController),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Password *',
+                      style: TextStyle(color: Color(0xff858D9A)),
+                    ),
+                  ),
+                  SizedBox(height: 5),
+                  CustomTextFormField(
+                    controller: passwordController,
+                    hintText: 'Password',
+                  ),
+                  SizedBox(height: 10),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: TextButton(
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
                             builder: (context) {
-                              return SignUpView();
+                              return ForgetPasswordView();
                             },
                           ),
                         );
                       },
                       child: Text(
-                        'Sign Up',
+                        'Forget password ?',
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: Color(0xff004D8E),
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ],
+                  ),
+                  BlocConsumer<LoginUserCubit, LoginUserState>(
+                    listener: (context, state) {
+                      if (state is LoginUserSuccess){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successfuly')));
+                        Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return MainView();
+                                },
+                              ),
+                            );
+                      }else if (state is LoginUserFailure){
+                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Failure')));
+                      }
+                    },
+                    builder: (context, state) {
+                      return state is LoginUserLoading? Center(child: CircularProgressIndicator(),): SizedBox(
+                        width: 300,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: pColor,
+                          ),
+                          onPressed: () async {
+                            if (formKey.currentState!.validate()) {
+                context.read<LoginUserCubit>().loginUser(phone_email: phoneController.text, password: passwordController.text);
+              }
+                            // AuthService service = AuthService();
+              
+                            // // بننادي الوظيفة وبنستنى الرد
+                            // var user = await service.loginUser(
+                            //   phone_email: "01012345679",
+                            //   password: "password123",
+                            // );
+              
+                            // // بنختبر النتيجة
+                            // if (user != null) {
+                            //   print("نجح التسجيل! التوكن هو: ${user.token}");
+                            // } else {
+                            //   print("فشل التسجيل، الرد رجع فاضي");
+                            // }
+                            // Navigator.of(context).push(
+                            //   MaterialPageRoute(
+                            //     builder: (context) {
+                            //       return MainView();
+                            //     },
+                            //   ),
+                            // );
+                          },
+                          child: Text(
+                            'Log in',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Don\'t have an account?'),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return SignUpView();
+                              },
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Sign Up',
+                          style: TextStyle(
+                            decoration: TextDecoration.underline,
+                            color: Color(0xff004D8E),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

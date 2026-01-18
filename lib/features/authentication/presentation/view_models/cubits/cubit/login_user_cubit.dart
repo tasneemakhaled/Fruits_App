@@ -12,18 +12,21 @@ class LoginUserCubit extends Cubit<LoginUserState> {
   LoginUserCubit() : super(LoginUserInitial());
   Dio dio =Dio();
   
- Future<AuthModel?> loginUser({required String phone_email,required String password})async{
+ Future<void> loginUser({required String phone_email,required String password})async{
+  emit(LoginUserLoading());
   try{
  var res= await dio.post('$baseUrl/login',data: {
     'phone_email':phone_email,
     'password':password,
   });
     if (res.statusCode==200){
-  return AuthModel.fromJson(res.data);
+      emit(LoginUserSuccess());
+  // return AuthModel.fromJson(res.data);
  }
 }on Exception catch (e) {
    log("Error: $e");
+   emit(LoginUserFailure());
 }
-return null;
+
   }
 }
