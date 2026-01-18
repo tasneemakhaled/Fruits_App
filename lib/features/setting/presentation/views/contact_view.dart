@@ -4,8 +4,19 @@ import 'package:fruit_app/core/utils/constants.dart';
 
 import 'package:fruit_app/features/authentication/presentation/views/widgets/custom_text_form_field.dart';
 
-class ContactView extends StatelessWidget {
+class ContactView extends StatefulWidget {
   const ContactView({super.key});
+
+  @override
+  State<ContactView> createState() => _ContactViewState();
+}
+
+class _ContactViewState extends State<ContactView> {
+final TextEditingController nameController = TextEditingController();
+
+  final TextEditingController phoneController = TextEditingController();
+
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +37,10 @@ class ContactView extends StatelessWidget {
             children: [
               Align(alignment: Alignment.topLeft, child: Text('Name')),
               SizedBox(height: MediaQuery.of(context).size.height * 0.001),
-              CustomTextFormField(),
+              CustomTextFormField(controller: nameController,),
               SizedBox(height: MediaQuery.of(context).size.height * 0.001),
               Align(alignment: Alignment.topLeft, child: Text('Mobile Number')),
-              CustomTextFormField(),
+              CustomTextFormField(controller: phoneController,),
               SizedBox(height: MediaQuery.of(context).size.height * 0.001),
               Align(alignment: Alignment.topLeft, child: Text('Message')),
               CustomTextFormField(maxLines: 4),

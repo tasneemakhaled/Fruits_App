@@ -5,8 +5,15 @@ import 'package:fruit_app/features/authentication/presentation/views/widgets/cus
 
 import 'package:fruit_app/features/authentication/presentation/views/widgets/phone_input_field.dart';
 
-class ForgetPasswordView extends StatelessWidget {
+class ForgetPasswordView extends StatefulWidget {
   const ForgetPasswordView({super.key});
+
+  @override
+  State<ForgetPasswordView> createState() => _ForgetPasswordViewState();
+}
+
+class _ForgetPasswordViewState extends State<ForgetPasswordView> {
+  final TextEditingController phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,7 @@ class ForgetPasswordView extends StatelessWidget {
             ),
             Align(alignment: Alignment.topLeft, child: Text('Phone Number *')),
             SizedBox(height: 5),
-            PhoneInputField(),
+            PhoneInputField(controller: phoneController,),
             SizedBox(height: 20),
             SizedBox(
               width: 300,

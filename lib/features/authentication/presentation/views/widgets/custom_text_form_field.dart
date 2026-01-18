@@ -6,18 +6,25 @@ class CustomTextFormField extends StatelessWidget {
     this.label,
     this.hintText,
     this.keyboardType,
-    this.maxLines,
+    this.maxLines,  this.controller,
   });
 
   final String? label;
   final String? hintText;
   final TextInputType? keyboardType;
   final int? maxLines;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45,
       child: TextFormField(
+        validator: (value){
+        if (value==null|| value.isEmpty){
+          return 'Field is required';
+        }
+        },
+        controller: controller,
         keyboardType: keyboardType,
         decoration: InputDecoration(
           hintText: hintText,
