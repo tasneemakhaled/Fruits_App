@@ -39,6 +39,7 @@ return null;
 }on Exception catch (e) {
    log("Error: $e");
 }
+return null;
   }
 
    Future<AuthModel?> ForgetPasswordUser({required String email})async{
@@ -52,6 +53,7 @@ return null;
 }on Exception catch (e) {
    log("Error: $e");
 }
+return null;
   }
 
 }

@@ -70,29 +70,29 @@ class SignUpView extends StatelessWidget {
                 height: 45,
                 child: CustomButton(
                   onPressed: () async{
-                    AuthService service = AuthService();
+  //                   AuthService service = AuthService();
   
-  // بننادي الوظيفة وبنستنى الرد
-  var user = await service.registerUser(
-    name: "خالد",
-    email: "tasneem@gmail.com",
-    mobile: "01012345679",
-    password: "password123",
-  );
+  // // بننادي الوظيفة وبنستنى الرد
+  // var user = await service.registerUser(
+  //   name: "خالد",
+  //   email: "tasneem@gmail.com",
+  //   mobile: "01012345679",
+  //   password: "password123",
+  // );
 
-  // بنختبر النتيجة
-  if (user != null) {
-    print("نجح التسجيل! التوكن هو: ${user.token}");
-  } else {
-    print("فشل التسجيل، الرد رجع فاضي");
-  }
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return MainView();
-                    //     },
-                    //   ),
-                    // );
+  // // بنختبر النتيجة
+  // if (user != null) {
+  //   print("نجح التسجيل! التوكن هو: ${user.token}");
+  // } else {
+  //   print("فشل التسجيل، الرد رجع فاضي");
+  // }
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MainView();
+                        },
+                      ),
+                    );
                   },
                   text: 'Sign Up',
                   buttonColor: pColor,

@@ -98,13 +98,13 @@ class LoginView extends StatelessWidget {
   } else {
     print("فشل التسجيل، الرد رجع فاضي");
   }
-                    // Navigator.of(context).push(
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return MainView();
-                    //     },
-                    //   ),
-                    // );
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MainView();
+                        },
+                      ),
+                    );
                   },
                   child: Text(
                     'Log in',
