@@ -7,6 +7,13 @@ final class FavouriteProductsInitial extends FavouriteProductsState {}
 
 final class FavouriteProductsLoading extends FavouriteProductsState {}
 
-final class FavouriteProductsSuccess extends FavouriteProductsState {}
+final class FavouriteProductsSuccess extends FavouriteProductsState {
+  final List<DatumFavourite> favouriteProducts;
 
-final class FavouriteProductsFailure extends FavouriteProductsState {}
+  FavouriteProductsSuccess({required this.favouriteProducts});
+}
+
+final class FavouriteProductsFailure extends FavouriteProductsState {
+final String errMessage;
+  FavouriteProductsFailure(this.errMessage);
+}

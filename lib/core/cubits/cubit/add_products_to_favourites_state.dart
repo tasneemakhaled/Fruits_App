@@ -7,4 +7,8 @@ final class AddProductsToFavouritesInitial extends AddProductsToFavouritesState 
 
 final class AddProductsToFavouritesLoading extends AddProductsToFavouritesState {}
 final class AddProductsToFavouritesSuccess extends AddProductsToFavouritesState {}
-final class AddProductsToFavouritesFailure extends AddProductsToFavouritesState {}
+final class AddProductsToFavouritesFailure extends AddProductsToFavouritesState {
+  final String errorMessage;
+
+  AddProductsToFavouritesFailure({required this.errorMessage});
+}

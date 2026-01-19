@@ -88,7 +88,7 @@ class SellerStore extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => const ProductDetails(),
+                                  builder: (context) =>  ProductDetails(product:  productsList[index],),
                                 ),
                               );
                             },

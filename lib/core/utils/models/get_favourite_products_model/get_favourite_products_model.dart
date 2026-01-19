@@ -4,7 +4,7 @@ class GetFavouriteProductsModel {
   bool? result;
   String? errorMessage;
   String? errorMessageEn;
-  List<Datum>? data;
+  List<DatumFavourite>? data;
 
   GetFavouriteProductsModel({
     this.result,
@@ -19,7 +19,7 @@ class GetFavouriteProductsModel {
       errorMessage: json['error_message'] as String?,
       errorMessageEn: json['error_message_en'] as String?,
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => Datum.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => DatumFavourite.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
   }

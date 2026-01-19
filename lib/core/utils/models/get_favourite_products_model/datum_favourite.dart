@@ -1,14 +1,14 @@
 import 'product.dart';
 
-class Datum {
+class DatumFavourite {
   int? id;
   int? favoId;
   int? priceWithDiscount;
   Product? product;
 
-  Datum({this.id, this.favoId, this.priceWithDiscount, this.product});
+  DatumFavourite({this.id, this.favoId, this.priceWithDiscount, this.product});
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory DatumFavourite.fromJson(Map<String, dynamic> json) => DatumFavourite(
     id: json['id'] as int?,
     favoId: json['favo_id'] as int?,
     priceWithDiscount: json['price_with_discount'] as int?,
