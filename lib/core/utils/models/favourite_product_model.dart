@@ -1,3 +1,1 @@
-class FavouriteProductModel {
-  
-}
+class FavouriteProductModel {}

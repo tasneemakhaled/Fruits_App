@@ -4,7 +4,7 @@ import 'package:fruit_app/core/utils/constants.dart';
 
 class AddressWidget extends StatelessWidget {
   final VoidCallback onContinue;
-  
+
   const AddressWidget({super.key, required this.onContinue});
 
   @override

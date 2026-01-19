@@ -19,7 +19,7 @@ class _SignUpViewState extends State<SignUpView> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> formKey=GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -90,60 +90,70 @@ class _SignUpViewState extends State<SignUpView> {
                     height: 45,
                     child: BlocConsumer<RegisterUserCubit, RegisterUserState>(
                       listener: (context, state) {
-                       if(state is RegisterUserSuccess){
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Registered Successfuly')));
+                        if (state is RegisterUserSuccess) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Registered Successfuly')),
+                          );
                           Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return MainView();
-                                },
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return MainView();
+                              },
+                            ),
+                          );
+                        } else if (state is RegisterUserFailure) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'failed to sign up ,please try again!',
                               ),
-                            );
-                          
-                        }else if (state is RegisterUserFailure){
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('failed to sign up ,please try again!')));
+                            ),
+                          );
                         }
                       },
                       builder: (context, state) {
-                        return state is RegisterUserLoading? Center(child: CircularProgressIndicator()): CustomButton(
-                          onPressed: () async {
-                       if (formKey.currentState!.validate()) {
-  context.read<RegisterUserCubit>().registerUser(
-                        name: nameController.text, 
-                        mobile: phoneController.text,
-                        password: passwordController.text,
-                      );
-}
-              
-              
-                            //                   AuthService service = AuthService();
-              
-                            // // بننادي الوظيفة وبنستنى الرد
-                            // var user = await service.registerUser(
-                            //   name: "خالد",
-                            //   email: "tasneem@gmail.com",
-                            //   mobile: "01012345679",
-                            //   password: "password123",
-                            // );
-              
-                            // // بنختبر النتيجة
-                            // if (user != null) {
-                            //   print("نجح التسجيل! التوكن هو: ${user.token}");
-                            // } else {
-                            //   print("فشل التسجيل، الرد رجع فاضي");
-                            // }
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //     builder: (context) {
-                            //       return MainView();
-                            //     },
-                            //   ),
-                            // );
-                          },
-                          text: 'Sign Up',
-                          buttonColor: pColor,
-                          textColor: Colors.white,
-                        );
+                        return state is RegisterUserLoading
+                            ? Center(child: CircularProgressIndicator())
+                            : CustomButton(
+                                onPressed: () async {
+                                  if (formKey.currentState!.validate()) {
+                                    context
+                                        .read<RegisterUserCubit>()
+                                        .registerUser(
+                                          name: nameController.text,
+                                          mobile: phoneController.text,
+                                          password: passwordController.text,
+                                        );
+                                  }
+
+                                  //                   AuthService service = AuthService();
+
+                                  // // بننادي الوظيفة وبنستنى الرد
+                                  // var user = await service.registerUser(
+                                  //   name: "خالد",
+                                  //   email: "tasneem@gmail.com",
+                                  //   mobile: "01012345679",
+                                  //   password: "password123",
+                                  // );
+
+                                  // // بنختبر النتيجة
+                                  // if (user != null) {
+                                  //   print("نجح التسجيل! التوكن هو: ${user.token}");
+                                  // } else {
+                                  //   print("فشل التسجيل، الرد رجع فاضي");
+                                  // }
+                                  // Navigator.of(context).push(
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) {
+                                  //       return MainView();
+                                  //     },
+                                  //   ),
+                                  // );
+                                },
+                                text: 'Sign Up',
+                                buttonColor: pColor,
+                                textColor: Colors.white,
+                              );
                       },
                     ),
                   ),

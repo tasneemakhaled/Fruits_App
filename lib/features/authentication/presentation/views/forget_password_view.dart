@@ -42,7 +42,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
             ),
             Align(alignment: Alignment.topLeft, child: Text('Phone Number *')),
             SizedBox(height: 5),
-            PhoneInputField(controller: phoneController,),
+            PhoneInputField(controller: phoneController),
             SizedBox(height: 20),
             SizedBox(
               width: 300,

@@ -6,7 +6,8 @@ class CustomTextFormField extends StatelessWidget {
     this.label,
     this.hintText,
     this.keyboardType,
-    this.maxLines,  this.controller,
+    this.maxLines,
+    this.controller,
   });
 
   final String? label;
@@ -19,10 +20,10 @@ class CustomTextFormField extends StatelessWidget {
     return SizedBox(
       height: 45,
       child: TextFormField(
-        validator: (value){
-        if (value==null|| value.isEmpty){
-          return 'Field is required';
-        }
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Field is required';
+          }
         },
         controller: controller,
         keyboardType: keyboardType,

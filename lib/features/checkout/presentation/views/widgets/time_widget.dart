@@ -4,7 +4,7 @@ import 'package:fruit_app/core/utils/constants.dart';
 
 class TimeWidget extends StatefulWidget {
   final VoidCallback onContinue;
-  
+
   const TimeWidget({super.key, required this.onContinue});
 
   @override

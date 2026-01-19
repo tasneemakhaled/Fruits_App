@@ -12,7 +12,7 @@ class ContactView extends StatefulWidget {
 }
 
 class _ContactViewState extends State<ContactView> {
-final TextEditingController nameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
   final TextEditingController phoneController = TextEditingController();
 
@@ -37,10 +37,10 @@ final TextEditingController nameController = TextEditingController();
             children: [
               Align(alignment: Alignment.topLeft, child: Text('Name')),
               SizedBox(height: MediaQuery.of(context).size.height * 0.001),
-              CustomTextFormField(controller: nameController,),
+              CustomTextFormField(controller: nameController),
               SizedBox(height: MediaQuery.of(context).size.height * 0.001),
               Align(alignment: Alignment.topLeft, child: Text('Mobile Number')),
-              CustomTextFormField(controller: phoneController,),
+              CustomTextFormField(controller: phoneController),
               SizedBox(height: MediaQuery.of(context).size.height * 0.001),
               Align(alignment: Alignment.topLeft, child: Text('Message')),
               CustomTextFormField(maxLines: 4),

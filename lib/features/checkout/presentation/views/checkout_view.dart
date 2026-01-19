@@ -10,7 +10,7 @@ class CheckoutView extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-         forceMaterialTransparency: true,
+        forceMaterialTransparency: true,
         backgroundColor: Colors.white,
         centerTitle: true,
         title: Text(

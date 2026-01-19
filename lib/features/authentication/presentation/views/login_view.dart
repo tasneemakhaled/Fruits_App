@@ -24,7 +24,7 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController phoneController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> formKey=GlobalKey<FormState>();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -100,62 +100,71 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   BlocConsumer<LoginUserCubit, LoginUserState>(
                     listener: (context, state) {
-                      if (state is LoginUserSuccess){
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Successfuly')));
+                      if (state is LoginUserSuccess) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Login Successfuly')),
+                        );
                         Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) {
-                                  return MainView();
-                                },
-                              ),
-                            );
-                      }else if (state is LoginUserFailure){
-                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login Failure')));
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return MainView();
+                            },
+                          ),
+                        );
+                      } else if (state is LoginUserFailure) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Login Failure')),
+                        );
                       }
                     },
                     builder: (context, state) {
-                      return state is LoginUserLoading? Center(child: CircularProgressIndicator(),): SizedBox(
-                        width: 300,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: pColor,
-                          ),
-                          onPressed: () async {
-                            if (formKey.currentState!.validate()) {
-                context.read<LoginUserCubit>().loginUser(phone_email: phoneController.text, password: passwordController.text);
-              }
-                            // AuthService service = AuthService();
-              
-                            // // بننادي الوظيفة وبنستنى الرد
-                            // var user = await service.loginUser(
-                            //   phone_email: "01012345679",
-                            //   password: "password123",
-                            // );
-              
-                            // // بنختبر النتيجة
-                            // if (user != null) {
-                            //   print("نجح التسجيل! التوكن هو: ${user.token}");
-                            // } else {
-                            //   print("فشل التسجيل، الرد رجع فاضي");
-                            // }
-                            // Navigator.of(context).push(
-                            //   MaterialPageRoute(
-                            //     builder: (context) {
-                            //       return MainView();
-                            //     },
-                            //   ),
-                            // );
-                          },
-                          child: Text(
-                            'Log in',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      );
+                      return state is LoginUserLoading
+                          ? Center(child: CircularProgressIndicator())
+                          : SizedBox(
+                              width: 300,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: pColor,
+                                ),
+                                onPressed: () async {
+                                  if (formKey.currentState!.validate()) {
+                                    context.read<LoginUserCubit>().loginUser(
+                                      phone_email: phoneController.text,
+                                      password: passwordController.text,
+                                    );
+                                  }
+                                  // AuthService service = AuthService();
+
+                                  // // بننادي الوظيفة وبنستنى الرد
+                                  // var user = await service.loginUser(
+                                  //   phone_email: "01012345679",
+                                  //   password: "password123",
+                                  // );
+
+                                  // // بنختبر النتيجة
+                                  // if (user != null) {
+                                  //   print("نجح التسجيل! التوكن هو: ${user.token}");
+                                  // } else {
+                                  //   print("فشل التسجيل، الرد رجع فاضي");
+                                  // }
+                                  // Navigator.of(context).push(
+                                  //   MaterialPageRoute(
+                                  //     builder: (context) {
+                                  //       return MainView();
+                                  //     },
+                                  //   ),
+                                  // );
+                                },
+                                child: Text(
+                                  'Log in',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            );
                     },
                   ),
                   SizedBox(height: 20),

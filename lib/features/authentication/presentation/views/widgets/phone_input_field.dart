@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 
 class PhoneInputField extends StatelessWidget {
-  const PhoneInputField({super.key,  this.controller});
-final TextEditingController? controller;
+  const PhoneInputField({super.key, this.controller});
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45, // زودتها سنة بسيطة عشان متقصش الكلام
       child: TextFormField(
-        validator: (value){
-          if(value==null||value.isEmpty){
+        validator: (value) {
+          if (value == null || value.isEmpty) {
             return 'Field is required';
           }
         },

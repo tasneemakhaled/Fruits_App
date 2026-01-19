@@ -26,7 +26,12 @@ class ProductDetails extends StatelessWidget {
                 ),
               );
             },
-            icon: Icon(Icons.favorite_border),
+            icon: IconButton(
+              onPressed: (){
+
+                
+              },
+              icon:Icon(Icons.favorite_border)),
           ),
           IconButton(onPressed: () {}, icon: Icon(FeatherIcons.share)),
         ],

@@ -99,7 +99,7 @@ class _CheckoutHeaderState extends State<CheckoutHeader> {
                   child: Center(
                     child: Container(
                       width: currentPage == 1 ? 8 : 0,
-                      height: currentPage == 1 ? 8 :0,
+                      height: currentPage == 1 ? 8 : 0,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Colors.black,
