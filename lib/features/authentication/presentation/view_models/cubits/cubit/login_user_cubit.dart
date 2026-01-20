@@ -27,9 +27,19 @@ class LoginUserCubit extends Cubit<LoginUserState> {
         // Dio يحول البيانات تلقائياً لـ Map، لا تستخدمي json.decode
         final body = res.data; 
         String token = body['data']['token'];
+ int userId = body['data']['id']; // الـ ID يرجع كـ int من السيرفر
 
+        // 2. حفظ التوكن
         await storage.write(key: 'user_token', value: token);
-        print("Token Saved Successfully: $token"); // للتأكد
+        
+        // 3. حفظ الـ ID (يجب تحويله لـ String لأن التخزين يقبل نصوصاً فقط)
+        await storage.write(key: 'user_id', value: userId.toString());
+
+        log("Token Saved: $token");
+        log("User ID Saved: $userId");
+        // await storage.write(key: 'user_token', value: token);
+        // print("Token Saved Successfully: $token");
+      
         emit(LoginUserSuccess());
       }
     } on Exception catch (e) {
