@@ -64,11 +64,11 @@ class FavouriteView extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  item.product?.img ?? "", // صورة حقيقية
-                  height: 70, width: 70, fit: BoxFit.cover,
-                  errorBuilder: (_, __, ___) => const Icon(Icons.broken_image),
-                ),
+                child: Image.asset(
+                'assets/images/vegetables.png',
+                height: 80,
+                width: 80,
+              ),
               ),
               const SizedBox(width: 12),
               Expanded(
@@ -81,7 +81,7 @@ class FavouriteView extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      "${item.priceWithDiscount ?? item.product?.price} KD",
+                      "${ item.product!.price} KD",
                       style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600),
                     ),
                   ],

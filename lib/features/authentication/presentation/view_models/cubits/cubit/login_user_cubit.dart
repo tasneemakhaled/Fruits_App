@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:fruit_app/core/utils/constants.dart';
 import 'package:meta/meta.dart';
 
@@ -22,8 +24,13 @@ class LoginUserCubit extends Cubit<LoginUserState> {
         data: {'phone_email': phone_email, 'password': password},
       );
       if (res.statusCode == 200) {
+        // Dio يحول البيانات تلقائياً لـ Map، لا تستخدمي json.decode
+        final body = res.data; 
+        String token = body['data']['token'];
+
+        await storage.write(key: 'user_token', value: token);
+        print("Token Saved Successfully: $token"); // للتأكد
         emit(LoginUserSuccess());
-        // return AuthModel.fromJson(res.data);
       }
     } on Exception catch (e) {
       log("Error: $e");
